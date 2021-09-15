@@ -1,0 +1,15 @@
+server:
+  port: 9010
+
+spring:
+  output:
+    ansi:
+      enabled: always
+
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+#  path: /
+##  file: F:\hello.log
+#  level:
+#    org.example: debug

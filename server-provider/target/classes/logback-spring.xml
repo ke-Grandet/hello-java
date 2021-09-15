@@ -1,0 +1,44 @@
+<configuration>
+    <!-- 变量 -->
+    <property name="appName" value="HELLO"/>
+    <property
+            name="consoleLogPattern"
+            value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %yellow([%thread]) %boldCyan(%logger{15}) %msg%n"/>
+    <property
+            name="fileLogPattern"
+            value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} %msg%n"/>
+
+    <!-- 输出到控制台 -->
+    <appender name="toConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${consoleLogPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出到文件 -->
+    <appender name="toErrorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>hello_error_today.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>hello_error_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${fileLogPattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+        </filter>
+    </appender>
+
+    <!-- 基础logger -->
+    <root level="info">
+        <appender-ref ref="toConsole"/>
+        <appender-ref ref="toErrorFile"/>
+    </root>
+
+    <!-- 自定义logger -->
+    <logger level="debug" name="org.example.provider" additivity="false">
+        <appender-ref ref="toConsole"/>
+        <appender-ref ref="toErrorFile"/>
+    </logger>
+</configuration>
