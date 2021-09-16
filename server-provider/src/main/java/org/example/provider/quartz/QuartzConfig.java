@@ -1,12 +1,13 @@
 package org.example.provider.quartz;
 
 import org.quartz.*;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class QuartzConfig {
 
-//    @Bean
+    @Bean
     public JobDetail job1() {
         return JobBuilder
                 .newJob(PrintJob.class)
@@ -15,11 +16,11 @@ public class QuartzConfig {
                 .build();
     }
 
-//    @Bean
+    @Bean
     public Trigger trigger1(JobDetail job1) {
         CronScheduleBuilder cronScheduleBuilder =
                 CronScheduleBuilder
-                        .cronSchedule("40/3 * * ? * * *")
+                        .cronSchedule("0 * * ? * * *")
                         .withMisfireHandlingInstructionDoNothing()
                 ;
         return TriggerBuilder
