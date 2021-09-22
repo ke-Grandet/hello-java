@@ -23,6 +23,8 @@
         <module>javafx</module>
         <module>server-provider</module>
         <module>server-gateway</module>
+        <module>say-hello</module>
+        <module>user</module>
     </modules>
 
     <properties>

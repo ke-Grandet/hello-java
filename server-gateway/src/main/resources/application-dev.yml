@@ -1,2 +1,9 @@
 server:
   port: 8000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: server-provider
+          uri: lb://server-provider

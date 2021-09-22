@@ -1,7 +1,17 @@
 server:
-  port: 9010
+  port: 8010
 
 spring:
+  # 在没有自定义logback.xml时开启控制台彩色输出
   output:
     ansi:
       enabled: always
+  # JDBC配置
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/moviedb?useUnicode=true&characterEncoding=utf-8
+    username: moviedb_manager
+    password: 123
+    druid:
+      initial-size: 5
+      max-active: 10

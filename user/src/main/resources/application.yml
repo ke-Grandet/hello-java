@@ -1,0 +1,9 @@
+server:
+  port: 8120
+
+spring:
+  application:
+    name: user
+  output:
+    ansi:
+      enabled: always
