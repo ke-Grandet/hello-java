@@ -2,7 +2,7 @@
     <!-- 变量 -->
     <property name="serverName" value="server-provider"/>
     <property name="consoleLogPattern"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta([%thread]) %boldCyan(%logger{15}) %msg%n"/>
+            value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta([%thread]) %boldCyan(%logger{-1}) %msg%n"/>
     <property name="errorLogPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} %msg%n"/>
     <property name="errorLogActiveFile" value="server-provider/log/hello_error_today.log"/>
     <property name="errorLogFile" value="server-provider/log/hello_error_%d{yyyy-MM-dd}.log"/>

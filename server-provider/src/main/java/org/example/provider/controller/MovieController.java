@@ -1,33 +1,44 @@
 package org.example.provider.controller;
 
-import org.apache.ibatis.session.SqlSession;
-import org.example.provider.mapper.MovieMapper;
-import org.example.provider.pojo.dto.MovieDTO;
-import org.example.provider.pojo.po.Movie;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.example.provider.pojo.dto.add.MovieAddDTO;
+import org.example.provider.pojo.dto.page.MoviePageDTO;
+import org.example.provider.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
+@Slf4j
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
 
     @Autowired
-    MovieMapper movieMapper;
+    MovieService movieService;
 
-    @GetMapping("/getAll")
-    public List<Movie> getAll() {
-        return movieMapper.getAll();
+    @ApiOperation("分页查询")
+    @PostMapping("/page")
+    public Map<String, Object> page(@RequestBody MoviePageDTO moviePageDTO) {
+        return movieService.page(moviePageDTO);
     }
 
-    @GetMapping("/get/{id}")
-    public Movie get(@PathVariable String id) {
-        return movieMapper.getOne(id);
-    }
-
+    @ApiOperation("添加")
     @PostMapping("/add")
-    public String add(@RequestBody MovieDTO movieDTO) {
-        return movieMapper.insert(movieDTO);
+    public int add(@RequestBody MovieAddDTO movieAddDTO) {
+        return movieService.add(movieAddDTO);
+    }
+
+    @ApiOperation("更新")
+    @PostMapping("/update")
+    public void update(@RequestBody MovieAddDTO movieAddDTO) {
+        movieService.update(movieAddDTO);
+    }
+
+    @ApiOperation("删除")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable int id) {
+        movieService.delete(id);
     }
 }

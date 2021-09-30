@@ -2,13 +2,7 @@ package org.example.provider.controller;
 
 import org.example.provider.pojo.dto.HelloDTO;
 import org.example.provider.pojo.vo.HelloVO;
-import org.example.provider.service.IHelloService;
-import lombok.Cleanup;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 
 
 @RestController

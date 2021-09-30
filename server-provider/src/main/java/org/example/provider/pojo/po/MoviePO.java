@@ -5,10 +5,12 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Movie {
-    private String id;
+public class MoviePO {
+    private int id;
+    private String selfId;
     private String name;
     private String director;
+    private LocalDateTime releaseTime;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }
