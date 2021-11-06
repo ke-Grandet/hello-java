@@ -1,4 +1,4 @@
-package org.example.main.thrift;
+package org.example.main.thrift.server;
 
 import org.apache.thrift.TException;
 import org.example.main.thrift.lib.HelloService;
