@@ -2,7 +2,7 @@ package org.example.main.other;
 
 import java.io.*;
 
-public class Serializable {
+public class SerializableExample {
 
     private static final String file = "file.txt";
 
