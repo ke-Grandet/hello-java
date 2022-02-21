@@ -2,6 +2,9 @@ package org.example.main.other;
 
 import java.io.*;
 
+/**
+ * 序列化示例
+ */
 public class SerializableExample {
 
     private static final String file = "file.txt";
