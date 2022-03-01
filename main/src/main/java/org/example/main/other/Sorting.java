@@ -1,6 +1,7 @@
 package org.example.main.other;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 /**
  * 排序算法
@@ -13,12 +14,14 @@ public class Sorting {
      * @param arr 目标数组
      */
     public static void randomSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int random1 = (int) (Math.random() * arr.length);
-            int random2 = (int) (Math.random() * arr.length);
-            int temp = arr[random1];
-            arr[random1] = arr[random2];
-            arr[random2] = temp;
+        Random random = new Random();
+        for (int i = arr.length - 1; i > 0; i--) {
+            int randomIndex = random.nextInt(i + 1);
+            if (i != randomIndex) {
+                int temp = arr[i];
+                arr[i] = arr[randomIndex];
+                arr[randomIndex] = temp;
+            }
         }
     }
 
@@ -58,16 +61,15 @@ public class Sorting {
     public static void quickSort(int[] arr, int start, int end) {
         if (start >= end)  // 首先判断开始位置小于结束位置
             return;
-        int value = arr[start];  // 取数组第一个数作为标准值
+        int value = arr[(start + end) / 2];  // 取数组中间的数作为标准值
         int left = start;  // 左索引
         int right = end;  // 右索引
         while (left < right) {  // 在索引相撞前保持循环
-            // 因为取数组第一个数作为标准值，所以从数组右侧启动排序
-            while (left < right && arr[right] > value) {  // 索引发生过变化，因此每次都要判断 left < right
-                right--;  // 找到右起第一个小于标准值的数
-            }
             while (left < right && arr[left] < value) {  // 索引发生过变化，因此每次都要判断 left < right
                 left++;  // 找到左起第一个大于标准值的数
+            }
+            while (left < right && arr[right] > value) {  // 索引发生过变化，因此每次都要判断 left < right
+                right--;  // 找到右起第一个小于标准值的数
             }
             // 若两数不相等则交换位置
             if (left < right && arr[left] != arr[right]) {  // 索引发生过变化，因此每次都要判断 left < right

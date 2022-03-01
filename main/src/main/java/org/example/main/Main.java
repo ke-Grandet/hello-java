@@ -1,16 +1,17 @@
 package org.example.main;
 
 
+import org.example.main.other.ImmpSqlScript;
 import org.example.main.other.Sorting;
-import org.example.main.other.ThreadExample;
 
 import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        ThreadExample threadExample = new ThreadExample();
-        threadExample.runExample();
+        int[] arr = Sorting.randomArr(32);
+        Sorting.quickSort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(arr));
     }
 
 }
