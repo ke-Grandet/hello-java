@@ -1,8 +1,6 @@
 package org.example.main.other;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 二叉树
@@ -55,6 +53,46 @@ public class BinaryTree {
             if (tree.left != null) {
                 stack.push(tree.left);
             }
+        }
+        return list;
+    }
+
+    /**
+     * 中序遍历，递归实现
+     *
+     * @param binaryTree 目标二叉树
+     * @return 遍历结果
+     */
+    public static List<Integer> midOrderRecursion(BinaryTree binaryTree) {
+        if (binaryTree == null) {
+            return new ArrayList<>();
+        }
+        List<Integer> list = new ArrayList<>();
+        if (binaryTree.left != null)
+            list.addAll(midOrderRecursion(binaryTree.left));
+        list.add(binaryTree.value);
+        if (binaryTree.right != null)
+            list.addAll(midOrderRecursion(binaryTree.right));
+        return list;
+    }
+
+    /**
+     * 中序遍历， 非递归实现
+     *
+     * @param binaryTree 目标二叉树
+     * @return 遍历结果
+     */
+    public static List<Integer> midOrder(BinaryTree binaryTree) {
+        List<Integer> list = new ArrayList<>();
+        Deque<BinaryTree> stack = new ArrayDeque<>();
+        while (binaryTree != null || !stack.isEmpty()) {
+            while (binaryTree != null) {
+                stack.push(binaryTree);
+                binaryTree = binaryTree.left;
+            }
+            binaryTree = stack.pop();
+            list.add(binaryTree.value);
+            binaryTree = binaryTree.right;
         }
         return list;
     }
